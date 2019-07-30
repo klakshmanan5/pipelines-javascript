@@ -20,4 +20,16 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- script: npm install -g @angular/cli
+- script: |
+    npm install -g @angular/cli
+  displayName: Install angular cli
+
+- script: |
+    npm install
+  displayName: Install npm
+
+- script: |
+    yarn install
+  displayName: Install yarn
+
+  
