@@ -22,3 +22,13 @@ steps:
     yarn install
   displayName: 'Install dependencies'
   
+- script: npm run compile
+
+- script: npm test
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: '**/TEST-RESULTS.xml'
+  
