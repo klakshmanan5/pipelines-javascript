@@ -23,6 +23,6 @@ steps:
 
 - bash: |
     chrome --headless --remote-debugging-port=9222 https://chromium.org
-    displayName: 'Start Google Chrome'
+  displayName: 'Start Google Chrome'
 
   
