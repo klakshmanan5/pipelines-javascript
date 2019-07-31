@@ -10,25 +10,14 @@ pool:
   vmImage: 'ubuntu-16.04'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '8.x'
-  displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-    npm install -g @angular/cli
-    yarn install
-  displayName: 'Install dependencies'
-  
-- script: npm run build
-
-- script: npm test
-
-- task: PublishTestResults@2
-  condition: succeededOrFailed()
-  inputs:
-    testRunner: JUnit
-    testResultsFiles: '**/TEST-RESULTS.xml'
+- bash: |
+    sudo apt-get update
+    sudo apt-get install -y libappindicator1 fonts-liberation
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome*.deb
+    dpkg -l | grep google 
+    dpkg -L google-chrome-stable
+    sudo cp /usr/bin/google-chrome-stable /opt/google/
+  displayName: 'Install Google Chrome'
   
